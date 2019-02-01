@@ -30,7 +30,32 @@ export default {
   }
   p {
     margin-top: 1.2rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
+  }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 7rem;
+    }
+    p {
+      font-size: 1.7rem;
+      margin: 5% 10%;
+      font-weight: 100;
+      letter-spacing: 0.5rem; //odstep miedzy znakami
+      line-height: 1.5; //odstep miedzy wierszami
+    }
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 9rem;
+      margin: 2% 0 7% 0;
+    }
+    p {
+      font-size: 1.7rem;
+      margin: 1% 25%;
+      font-weight: 100;
+      letter-spacing: 0.5rem; //odstep miedzy znakami
+      line-height: 1.5; //odstep miedzy wierszami
+    }
   }
 }
 </style>>
