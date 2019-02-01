@@ -1,15 +1,7 @@
 <template>
   <div class="wrapper">
-    <div class="search">
-      <label for="search">Search</label>
-      <input id="search" name="search" v-model="searchValue" @input="handleInput">
-      <ul>
-        <!-- jak juz spakowalismy dane do tablicy to ją wyświetlimy przy pomocy dyrektywy v-for -->
-        <li v-for="item in results" :key="item.dt">
-          <p>{{ item.main.temp }}</p>
-        </li>
-      </ul>
-    </div>
+    <Claim/>
+    <Search/>
   </div>
 </template>
 
@@ -19,9 +11,12 @@ import axios from "axios";
 import debounce from "lodash.debounce";
 const API = "https://api.openweathermap.org/data/2.5/forecast?q=";
 const API_ID = "&appid=8516c35a5aa25a2690f4dca7c0d11239";
+import Claim from "@/components/Claim.vue";
+import Search from "@/components/Search.vue";
 
 export default {
   name: "search",
+  components: { Claim, Search },
   //data w komponencie musi byc funkcja ktora zwraca obiekt, nie moze byc czystym obiektem
   data() {
     return {
@@ -53,23 +48,18 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 2rem;
+  width: 100%;
+  min-height: 100vh;
 
   width: 100%;
   margin: 0;
-  padding: 30px;
-  .search {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-  }
-  input {
-    height: 30px;
-    border: 0;
-    border-bottom: 1px solid black;
-  }
-  label {
-    font-family: Montserrat, sans-serif;
-  }
+  // padding: 30px;
+
+  background-image: url("../assets/widok-okno-ofc-wschod-piatkowo.jpg");
+  background-size: cover;
 }
 </style>
 
