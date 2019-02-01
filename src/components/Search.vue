@@ -32,9 +32,6 @@ export default {
     border: 0;
     border-bottom: 1px solid white;
     background-color: transparent;
-  }
-  label {
-    font-family: Montserrat, sans-serif;
     color: white;
   }
 }

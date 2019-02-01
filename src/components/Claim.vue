@@ -21,7 +21,7 @@ export default {
   justify-content: center;
   align-content: center;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  // font-family: "Montserrat", sans-serif;
   color: white;
   h1 {
     text-transform: uppercase;

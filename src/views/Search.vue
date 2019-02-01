@@ -44,22 +44,35 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 2rem;
-  width: 100%;
-  min-height: 100vh;
+body {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
 
-  width: 100%;
-  margin: 0;
-  // padding: 30px;
+    width: 100%;
+    height: 100vh;
 
-  background-image: url("../assets/widok-okno-ofc-wschod-piatkowo.jpg");
-  background-size: cover;
+    width: 100%;
+
+    padding: 0 2rem;
+
+    background-image: url("../assets/check-weather-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10% 0%;
+    &::after {
+      content: "";
+      background: rgba($color: #ffc239, $alpha: 0.2);
+      position: fixed;
+      top: 0;
+      z-index: 4;
+      width: 100%;
+      height: 100vh;
+    }
+  }
 }
 </style>
 
