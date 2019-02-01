@@ -40,7 +40,7 @@ export default {
         })
         .catch(error => {
           //w przeciwnym razie jezeli nie wyswietli odpowiedzi (to co wyzej), to wyswietl bledy
-          console.log(error);
+          console.log(`erorrrrr: ${error}`);
         });
     }, 500)
     // console.log(e.target.value); //cos takiego loguje to co wpiszemy na bierzaco do konsoli
