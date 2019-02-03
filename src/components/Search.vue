@@ -1,7 +1,7 @@
 <template>
   <div class="search-wrapper">
-    <!-- tutaj bindujemy wartosc inputa do propsa - tak trzeba. robimy propsa wew. scriptowych bebechow komponentu, nastepnie dajemy event do ktorego przypisujemy funkcje ktora wyemituje nazewnattz wartosc value -->
-    <input id="search" name="search" :value="value" @input="handleChange">
+    <!-- w skrócie dark: dark wg es6 mozemy zapisac dark, a jest to w sumie przypisanie propsa do faktycznej klasy css o nazwie dark -->
+    <input id="search" name="search" :class="{dark : dark}" :value="value" @input="handleChange">
     <!--  <ul>
         jak juz spakowalismy dane do tablicy to ją wyświetlimy przy pomocy dyrektywy v-for 
         <li v-for="item in results" :key="item.dt">
@@ -18,6 +18,11 @@ export default {
     value: {
       type: String,
       required: true
+    },
+    //tutaj wstawiamy propsa który akurat bedzie uzyty w app.vue ale w componencie tego pliku. natomiast props value odnosi sie do imputa który składa sie na ten komponent ( w tym pliku)
+    dark: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -29,6 +34,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$dark-color: #1e3d4a;
+
 .search-wrapper {
   margin-top: 3rem;
   display: flex;
@@ -48,7 +55,15 @@ input {
   text-align: center;
   &:focus {
     outline: none; //nie robi sie kwadrat na focusie
-    box-shadow: 0px 10px 20px -8px rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 12px 10px -10px rgba(255, 255, 255, 0.5);
+  }
+  //   class bind to props: dark - turn on when dark is true. dark === true when step === 1, so in second app view. See - search component in app.vue and an input tag inside component.
+}
+.dark {
+  color: $dark-color;
+  border-bottom-color: $dark-color;
+  &:focus {
+    box-shadow: 0px 12px 10px -10px rgba($dark-color, 0.5);
   }
 }
 @media (min-width: 768px) {

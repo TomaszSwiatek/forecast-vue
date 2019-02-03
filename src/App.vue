@@ -1,15 +1,13 @@
 <template>
   <div class="wrapper">
-    <BackgroundImage/>
-    <Claim/>
-    <!-- przez v-model przekazany jest (domyslnie dzieki vue - props, który w componencie zbindowany jest do value w inpucie czyli do jego paramteru odczytujacego wartosc. Natomiast v-model tu binduje do tablicy a event wykonuje event szukania) -->
-    <Search v-model="searchValue" @input="handleInput"/>
+    <BackgroundImage v-if="step === 0"/>
+    <Claim v-if="step === 0"/>
+    <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
   </div>
 </template>
 
 
 <script>
-// @ is an alias to /src
 import axios from "axios";
 import debounce from "lodash.debounce";
 const API = "https://api.openweathermap.org/data/2.5/forecast?q=";
@@ -21,31 +19,30 @@ import BackgroundImage from "@/components/BackgroundImage.vue";
 export default {
   name: "App",
   components: { Claim, Search, BackgroundImage },
-  //data w komponencie musi byc funkcja ktora zwraca obiekt, nie moze byc czystym obiektem
   data() {
     return {
-      searchValue: "" //jezeli deklarujemy v-model, to zmienna na ktorej operujemy musi miec inicjalna wartosc, inaczej zmienna przypisana do vmodel w input nie bedzie reaktywna
-      // results: [] //zmienna w ktorej przechowamy dane
+      loading: false,
+      step: 0, //stan poczatkowy - zmieniamy state i potem za pomocoa v-if pokazujemuy w tagu html co ma byc widoczne w danym stanie. mozemy do tego dodać stransition jako tag i wystylowac przejscie w css. liczy sie name tag. wiecej vue-transition
+      searchValue: "",
+      results: [] //zmienna w ktorej przechowamy dane
     };
   },
   methods: {
     handleInput: debounce(function() {
-      console.log(this.searchValue);
-
-      //koniecznie normalna fcja anonimowa. by zrobic fcje w funkcji przypisujemy klucz eventu i w jej parametrze funkcje z funkcja anonimowa w srodku - wynika to z dokumentacji lodasha. za funkcją po przecinku dajemy zwłokę którą czeka funkcja by nie wysyłała niepotrzebnych requestów.
+      this.loading = true; //when interpreter is exactly here loading turn to true.
+      // console.log(this.searchValue);
       axios
         .get(`${API}${this.searchValue}${API_ID}`)
         .then(response => {
           console.log(response.data.list);
           this.results = response.data.list;
+          this.loading = false; //after this line loading again is false. we do it to manage states in tags with v-if directive.
+          this.step = 1; //after this line we change to second state.
         })
         .catch(error => {
-          //w przeciwnym razie jezeli nie wyswietli odpowiedzi (to co wyzej), to wyswietl bledy
           console.log(`erorrrrr: ${error}`);
         });
     }, 500)
-    // console.log(e.target.value); //cos takiego loguje to co wpiszemy na bierzaco do konsoli
-    // console.log(this.searchValue); //drugi sposób
   }
 };
 </script>
@@ -63,13 +60,9 @@ export default {
 }
 
 body {
-  // font-family: "Montserrat", sans-serif;
-  // font-family: "Source Code Pro", monospace;
   font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
-
-  // search view
 
   .wrapper {
     display: flex;
