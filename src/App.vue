@@ -1,6 +1,14 @@
 <template>
-  <div class="wrapper">
-    <BackgroundImage v-if="step === 0"/>
+  <!-- jedna klasa nadana warunkowo, druga zwykla. w takim przypadku musimy wszystko oplesc w tabele by dzialalo. musimy tez zbindowac tag class. ( dlaczego?) -->
+  <div :class="[{flexStart: step === 1 }, 'wrapper']">
+    <transition>
+      <img src="./assets/logo-weather.svg" alt="logo site" class="logo" v-if="step === 1">
+    </transition>
+
+    <transition name="fade">
+      <BackgroundImage v-if="step === 0"/>
+    </transition>
+
     <Claim v-if="step === 0"/>
     <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
   </div>
@@ -64,7 +72,20 @@ body {
   margin: 0;
   padding: 0;
 
+  //to style transition we have 4 states - see vue docs- there is an img. (v-enter; v-enter-to (this two states are v-enter-active))(v-leave ; v-leave-to (and these v-leave-active))
+  //here are at all 4 classes
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.9s ease;
+  }
+  //here we overwrite 2 of 4 classes - the first and the last one.
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
   .wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,6 +96,18 @@ body {
     min-height: 100vh;
     width: 100%;
     padding: 0 2rem;
+    //adds this class to wrapper when step === 1 - see wrapper tag.
+    &.flexStart {
+      justify-content: flex-start;
+      padding-top: 13vh;
+    }
   }
-}
+  .logo {
+    position: absolute;
+    top: 2vh;
+    // left: 0;
+    width: 20%;
+    height: 20%;
+  }
+} //end of body
 </style>

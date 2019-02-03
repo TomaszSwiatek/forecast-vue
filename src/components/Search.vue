@@ -58,14 +58,15 @@ input {
     box-shadow: 0px 12px 10px -10px rgba(255, 255, 255, 0.5);
   }
   //   class bind to props: dark - turn on when dark is true. dark === true when step === 1, so in second app view. See - search component in app.vue and an input tag inside component.
-}
-.dark {
-  color: $dark-color;
-  border-bottom-color: $dark-color;
-  &:focus {
-    box-shadow: 0px 12px 10px -10px rgba($dark-color, 0.5);
+  &.dark {
+    color: $dark-color;
+    border-bottom-color: $dark-color;
+    &:focus {
+      box-shadow: 0px 12px 10px -10px rgba($dark-color, 0.5);
+    }
   }
 }
+
 @media (min-width: 768px) {
   input {
     font-size: 2.5rem;
