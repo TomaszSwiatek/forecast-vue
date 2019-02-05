@@ -11,6 +11,11 @@
 
     <Claim v-if="step === 0"/>
     <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
+    <div class="results">
+      <div v-for="item in results">
+        <p>{{item.main.temp}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
