@@ -2,7 +2,7 @@
   <!-- jedna klasa nadana warunkowo, druga zwykla. w takim przypadku musimy wszystko oplesc w tabele by dzialalo. musimy tez zbindowac tag class. ( dlaczego?) -->
   <div :class="[{flexStart: step === 1 }, 'wrapper']">
     <transition>
-      <img src="./assets/logo-weather.svg" alt="logo site" class="logo" v-if="step === 1">
+      <img src="./assets/3.svg" alt v-if="step === 1" class="logo">
     </transition>
 
     <transition name="fade">
@@ -13,6 +13,8 @@
     <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
   </div>
 </template>
+
+
 
 
 <script>
@@ -83,9 +85,18 @@ body {
   .fade-leave-to {
     opacity: 0;
   }
-
+  //____________________________________________
+  .logo-enter-active,
+  .logo-leave-active {
+    transition: padding-top 0.9s ease;
+  }
+  //here we overwrite 2 of 4 classes - the first and the last one.
+  .logo-enter,
+  .logo-leave-to {
+    padding-top: 0;
+  }
   .wrapper {
-    position: relative;
+    // position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,19 +106,20 @@ body {
     width: 100%;
     min-height: 100vh;
     width: 100%;
-    padding: 0 2rem;
+
     //adds this class to wrapper when step === 1 - see wrapper tag.
     &.flexStart {
       justify-content: flex-start;
-      padding-top: 13vh;
+      // padding-top: 13vh;
     }
   }
   .logo {
-    position: absolute;
-    top: 2vh;
-    // left: 0;
-    width: 20%;
-    height: 20%;
+    // position: absolute;
+    // top: 2vh;
+    // background-image: url("./assets/sky-690293.jpg");
+    width: 30vw;
+    padding-top: 2rem;
+    // height: 20%;
   }
 } //end of body
 </style>

@@ -3,10 +3,10 @@
     <!-- w skrócie dark: dark wg es6 mozemy zapisac dark, a jest to w sumie przypisanie propsa do faktycznej klasy css o nazwie dark -->
     <input id="search" name="search" :class="{dark : dark}" :value="value" @input="handleChange">
     <!--  <ul>
-        jak juz spakowalismy dane do tablicy to ją wyświetlimy przy pomocy dyrektywy v-for 
+        jak juz spakowalismy dane do tablicy to ją wyświetlimy przy pomocy dyrektywy v-for
         <li v-for="item in results" :key="item.dt">
           <p>{{ item.main.temp }}</p>
-        </li> 
+        </li>
     </ul>-->
   </div>
 </template>
