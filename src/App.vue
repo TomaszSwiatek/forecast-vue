@@ -96,31 +96,28 @@ body {
     margin-top: -50px;
   }
   .wrapper {
-    // position: relative;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     margin: 0;
 
     width: 100%;
     min-height: 100vh;
     width: 100%;
-    // padding-top: 2rem;
+    padding-top: 10vh;
 
     //adds this class to wrapper when step === 1 - see wrapper tag.
     &.flexStart {
       justify-content: flex-start;
-      // padding-top: 13vh;
     }
   }
   .logo {
-    // position: absolute;
-    // top: 2vh;
-    // background-image: url("./assets/sky-690293.jpg");
-    width: 30vw;
-    // padding-top: 2rem;
-    // height: 20%;
+    position: absolute;
+    top: 4vh; //padding is in vh, we ll try to config all by vh  to do our absolute element responsive
+    height: 6vh;
   }
 } //end of body
 </style>
