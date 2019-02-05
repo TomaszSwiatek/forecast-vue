@@ -1,8 +1,8 @@
 <template>
   <!-- jedna klasa nadana warunkowo, druga zwykla. w takim przypadku musimy wszystko oplesc w tabele by dzialalo. musimy tez zbindowac tag class. ( dlaczego?) -->
   <div :class="[{flexStart: step === 1 }, 'wrapper']">
-    <transition>
-      <img src="./assets/3.svg" alt v-if="step === 1" class="logo">
+    <transition name="slide">
+      <img src="./assets/3.svg" v-if="step === 1" class="logo">
     </transition>
 
     <transition name="fade">
@@ -86,14 +86,14 @@ body {
     opacity: 0;
   }
   //____________________________________________
-  .logo-enter-active,
-  .logo-leave-active {
-    transition: padding-top 0.9s ease;
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: margin-top 0.9s ease;
   }
   //here we overwrite 2 of 4 classes - the first and the last one.
-  .logo-enter,
-  .logo-leave-to {
-    padding-top: 0;
+  .slide-enter,
+  .slide-leave-to {
+    margin-top: -50px;
   }
   .wrapper {
     // position: relative;
@@ -106,6 +106,7 @@ body {
     width: 100%;
     min-height: 100vh;
     width: 100%;
+    // padding-top: 2rem;
 
     //adds this class to wrapper when step === 1 - see wrapper tag.
     &.flexStart {
@@ -118,7 +119,7 @@ body {
     // top: 2vh;
     // background-image: url("./assets/sky-690293.jpg");
     width: 30vw;
-    padding-top: 2rem;
+    // padding-top: 2rem;
     // height: 20%;
   }
 } //end of body
