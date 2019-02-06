@@ -13,18 +13,6 @@
     <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
     <div class="results" v-if="results && !loading && step === 1">
       <Item v-for="item in results" :item="item" :key="item.dt"/>
-      <!-- <div v-for="item in results" :key="item.dt">
-       <p>{{item.main.temp}}</p>
-        <p>{{`today at least temperature ${item.main.temp_min}`}}</p>
-        <p>{{`today maximum temperature ${item.main.temp_max}`}}</p>
-        <p>{{`at this time you can expect ${item.weather[0].description}`}}</p>
-        <p>{{`img icon number ${item.weather[0].icon}`}}</p>
-        <p>{{`Humidity is ${item.main.humidity}`}}</p>
-        <p>{{`Pressure is ${item.main.pressure}`}}</p>
-        <p>{{`Wind's speed circa ${item.wind.speed}`}}</p>
-        <p>{{`Wind's direction  ${item.wind.deg}`}}</p>
-        <p>{{item.dt_txt}}</p>
-      </div>-->
     </div>
   </div>
 </template>

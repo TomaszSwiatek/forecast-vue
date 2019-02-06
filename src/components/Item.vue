@@ -1,15 +1,17 @@
 <template>
-  <div class="item">
-    <p>{{toCelcius(temp)}}</p>
-    <p>{{`today at least temperature ${toCelcius(tempMin)}`}}</p>
-    <p>{{`today maximum temperature ${toCelcius(tempMax)}`}}</p>
-    <p>{{`at this time you can expect ${description}`}}</p>
-    <p>{{`img icon number ${iconId}`}}</p>
-    <p>{{`Humidity is ${humidity}`}}</p>
-    <p>{{`Pressure is ${pressure}`}}</p>
-    <p>{{`Wind's speed circa ${speed}`}}</p>
-    <p>{{`Wind's direction ${deg}`}}</p>
-    <p>{{date}}</p>
+  <div class="wrapper-item">
+    <div class="item">
+      <p>{{toCelcius(temp)}}</p>
+      <p>{{`today at least temperature ${toCelcius(tempMin)}`}}</p>
+      <p>{{`today maximum temperature ${toCelcius(tempMax)}`}}</p>
+      <p>{{`at this time you can expect ${description}`}}</p>
+      <p>{{`img icon number ${iconId}`}}</p>
+      <p>{{`Humidity is ${humidity}`}}</p>
+      <p>{{`Pressure is ${pressure}`}}</p>
+      <p>{{`Wind's speed circa ${speed}`}}</p>
+      <p>{{`Wind's direction ${deg}`}}</p>
+      <p>{{date}}</p>
+    </div>
   </div>
 </template>
 
@@ -18,7 +20,7 @@ export default {
   name: "Item",
   props: {
     item: {
-      type: String,
+      type: String, //? Object
       required: true
     }
   },
@@ -39,6 +41,9 @@ export default {
   methods: {
     toCelcius(kelvin) {
       return `${Math.floor(kelvin - 273.15)}`;
+    },
+    filterByDate() {
+      return this.$options.filters.item.date;
     }
   }
   //   computed: {
@@ -52,5 +57,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.wrapper-item {
+  .item {
+    margin: 2rem;
+  }
+}
 </style>
+
