@@ -12,7 +12,7 @@
     <Claim v-if="step === 0"/>
     <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
     <div class="results" v-if="results && !loading && step === 1">
-      <Item v-for="item in results" :item="item" :key="item.dt"/>
+      <Item v-for="item in results" :item="item" :key="item.dt" class="results-item"/>
     </div>
   </div>
 </template>
@@ -105,7 +105,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    background: rgba(167, 163, 163, 0.1);
     margin: 0;
 
     width: 100%;
@@ -116,6 +116,13 @@ body {
     //adds this class to wrapper when step === 1 - see wrapper tag.
     &.flexStart {
       justify-content: flex-start;
+    }
+    .results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0.5rem;
+      margin: 0.3rem;
+      margin-top: 3rem;
     }
   }
   .logo {
