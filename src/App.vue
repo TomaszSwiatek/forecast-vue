@@ -105,7 +105,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(167, 163, 163, 0.1);
+    // background: rgba(167, 163, 163, 0.1);
+    background-image: url("./assets/background-1.png");
+    background-position: bottom center;
+    background-size: cover;
     margin: 0;
 
     width: 100%;
