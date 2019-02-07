@@ -12,6 +12,7 @@
     <Claim v-if="step === 0"/>
     <Search v-model="searchValue" @input="handleInput" :dark="step === 1"/>
     <div class="results" v-if="results && !loading && step === 1">
+      <Chart/>
       <Item v-for="item in results" :item="item" :key="item.dt" class="results-item"/>
     </div>
   </div>
@@ -29,10 +30,11 @@ import Claim from "@/components/Claim.vue";
 import Search from "@/components/Search.vue";
 import BackgroundImage from "@/components/BackgroundImage.vue";
 import Item from "@/components/Item.vue";
+import Chart from "@/components/Chart.vue";
 
 export default {
   name: "App",
-  components: { Claim, Search, BackgroundImage, Item },
+  components: { Claim, Search, BackgroundImage, Item, Chart },
   data() {
     return {
       loading: false,
