@@ -15,14 +15,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin transparentBg {
+  background: hsla(0, 71%, 3%, 0.3);
+  overflow: hidden;
+  border-radius: 10px;
+}
 .claim-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   text-align: center;
-  // font-family: "Montserrat", sans-serif;
   color: white;
+  padding: 1rem;
+  //blur in background
+  @include transparentBg;
+  margin: 0 1rem;
   h1 {
     text-transform: uppercase;
     font-size: 3rem;
@@ -33,6 +41,7 @@ export default {
     font-size: 1rem;
   }
   @media (min-width: 768px) {
+    margin: 0 6rem;
     h1 {
       font-size: 7rem;
     }
@@ -45,13 +54,14 @@ export default {
     }
   }
   @media (min-width: 1024px) {
+    margin: 0 25%;
     h1 {
       font-size: 9rem;
       margin: 2% 0 7% 0;
     }
     p {
       font-size: 1.7rem;
-      margin: 1% 25%;
+      margin: 1% 15%;
       font-weight: 100;
       letter-spacing: 0.5rem; //odstep miedzy znakami
       line-height: 1.5; //odstep miedzy wierszami

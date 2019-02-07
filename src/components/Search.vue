@@ -35,7 +35,12 @@ export default {
 
 <style lang="scss" scoped>
 $dark-color: #1e3d4a;
-
+@mixin transparentBg {
+  background: hsla(0, 71%, 3%, 0.3);
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 1rem;
+}
 .search-wrapper {
   margin-top: 3rem;
   display: flex;
@@ -43,10 +48,10 @@ $dark-color: #1e3d4a;
   width: 50vw;
 }
 input {
-  // height: 30px;
+  @include transparentBg;
   border: 0;
   border-bottom: 1px solid white;
-  background-color: transparent;
+  // background-color: transparent;
   color: white;
   transition: box-shadow linear 0.5s;
   font-size: 1.3rem;

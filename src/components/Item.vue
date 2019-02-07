@@ -73,18 +73,14 @@ export default {
 <style lang="scss" scoped>
 .wrapper-item {
   font-family: "Open Sans", sans-serif;
-  //   color: white;
-  //   border-bottom: 1px solid black;
+
   display: flex;
   flex-direction: column;
   margin: 1.5rem 1rem;
   padding: 0.5rem;
   text-align: center;
   background: #fff;
-  //   border-radius: 10px;
 
-  //   background-color: rgba(9, 114, 159, 0.8);
-  //   border: 1px solid rgb(9, 114, 159);
   .description {
     margin: 1rem 0;
     font-size: 1.8rem;

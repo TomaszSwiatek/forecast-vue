@@ -6,7 +6,7 @@
     </transition>
 
     <transition name="fade">
-      <BackgroundImage v-if="step === 0"/>
+      <BackgroundImage :class="[{otherBackground: step === 1 }, 'backgroundImage-wrapper']"/>
     </transition>
 
     <Claim v-if="step === 0"/>
@@ -61,7 +61,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
+@mixin transparentBg {
+  background: hsla(0, 71%, 3%, 0.3);
+  overflow: hidden;
+  border-radius: 10px;
+}
 // tych styli nie scopujemy by mialy zasieg globalny. border box i ogolny reset ma byc dla wszystkich.
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800&subset=latin-ext");
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
@@ -105,8 +110,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // background: rgba(167, 163, 163, 0.1);
-    background-image: url("./assets/background-1.png");
     background-position: bottom center;
     background-size: cover;
     margin: 0;
