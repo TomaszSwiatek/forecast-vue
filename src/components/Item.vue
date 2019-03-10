@@ -24,7 +24,7 @@ export default {
   name: "Item",
   props: {
     item: {
-      type: String, //? Object
+      type: Object, //? Object
       required: true
     }
   },
