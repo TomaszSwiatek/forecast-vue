@@ -22,46 +22,52 @@
 
 
 <script>
-import axios from "axios";
-import debounce from "lodash.debounce";
-const API = "https://api.openweathermap.org/data/2.5/forecast?q=";
-const API_ID = "&appid=8516c35a5aa25a2690f4dca7c0d11239";
-import Claim from "@/components/Claim.vue";
-import Search from "@/components/Search.vue";
-import BackgroundImage from "@/components/BackgroundImage.vue";
-import Item from "@/components/Item.vue";
-import VueCharts from "vue-chartjs";
-import { Bar, Line } from "vue-chartjs";
+import axios from 'axios';
+import debounce from 'lodash.debounce';
+import Claim from '@/components/Claim.vue';
+import Search from '@/components/Search.vue';
+import BackgroundImage from '@/components/BackgroundImage.vue';
+import Item from '@/components/Item.vue';
+// import VueCharts from 'vue-chartjs';
+// import { Bar, Line } from 'vue-chartjs';
+
+const API = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+const API_ID = '&appid=8516c35a5aa25a2690f4dca7c0d11239';
 // import Chart from "@/components/Chart.vue";
 
 export default {
-  name: "App",
-  components: { Claim, Search, BackgroundImage, Item },
+  name: 'App',
+  components: {
+    Claim,
+    Search,
+    BackgroundImage,
+    Item,
+  },
   data() {
     return {
       loading: false,
-      step: 0, //stan poczatkowy - zmieniamy state i potem za pomocoa v-if pokazujemuy w tagu html co ma byc widoczne w danym stanie. mozemy do tego dodać stransition jako tag i wystylowac przejscie w css. liczy sie name tag. wiecej vue-transition
-      searchValue: "",
-      results: [] //zmienna w ktorej przechowamy dane
+      step: 0, // stan poczatkowy - zmieniamy state i potem za pomocoa v-if pokazujemuy w tagu html co ma byc widoczne w danym stanie. mozemy do tego dodać stransition jako tag i wystylowac przejscie w css. liczy sie name tag. wiecej vue-transition
+      searchValue: '',
+      results: [], // zmienna w ktorej przechowamy dane
     };
   },
   methods: {
-    handleInput: debounce(function() {
-      this.loading = true; //when interpreter is exactly here loading turn to true.
+    handleInput: debounce(function () {
+      this.loading = true; // when interpreter is exactly here loading turn to true.
       // console.log(this.searchValue);
       axios
         .get(`${API}${this.searchValue}${API_ID}`)
-        .then(response => {
+        .then((response) => {
           console.log(response.data.list);
           this.results = response.data.list;
-          this.loading = false; //after this line loading again is false. we do it to manage states in tags with v-if directive.
-          this.step = 1; //after this line we change to second state.
+          this.loading = false; // after this line loading again is false. we do it to manage states in tags with v-if directive.
+          this.step = 1; // after this line we change to second state.
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(`erorrrrr: ${error}`);
         });
-    }, 500)
-  }
+    }, 500),
+  },
 };
 </script>
 

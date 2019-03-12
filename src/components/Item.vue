@@ -21,12 +21,12 @@
 
 <script>
 export default {
-  name: "Item",
+  name: 'Item',
   props: {
     item: {
-      type: Object, //? Object
-      required: true
-    }
+      type: Object, // ? Object
+      required: true,
+    },
   },
   data() {
     return {
@@ -40,13 +40,13 @@ export default {
       speed: this.item.wind.speed,
       windDirection: this.item.wind.deg,
       date: this.item.dt_txt,
-      ApiImageLink: "http://openweathermap.org/img/w/"
+      ApiImageLink: 'http://openweathermap.org/img/w/',
     };
   },
   computed: {
     src() {
       return `${this.ApiImageLink}${this.iconId}.png`;
-    }
+    },
   },
   methods: {
     toCelcius(kelvin) {
@@ -54,11 +54,11 @@ export default {
     },
     windsDirection(angle) {
       angle;
-    }
-    // filterByDate(day) {
+    },
+    // filterByDat  e(day) {
     //   return this.$options.filters.item.date(day);
     // }
-  }
+  },
   //   computed: {
   //     temp() {
   //       return this.item.main.temp;

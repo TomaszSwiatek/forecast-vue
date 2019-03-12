@@ -13,23 +13,23 @@
 
 <script>
 export default {
-  name: "Search",
+  name: 'Search',
   props: {
     value: {
       type: String,
-      required: true
+      required: true,
     },
-    //tutaj wstawiamy propsa który akurat bedzie uzyty w app.vue ale w componencie tego pliku. natomiast props value odnosi sie do imputa który składa sie na ten komponent ( w tym pliku)
+    // tutaj wstawiamy propsa który akurat bedzie uzyty w app.vue ale w componencie tego pliku. natomiast props value odnosi sie do imputa który składa sie na ten komponent ( w tym pliku)
     dark: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     handleChange(e) {
-      this.$emit("input", e.target.value);
-    }
-  }
+      this.$emit('input', e.target.value);
+    },
+  },
 };
 </script>
 
@@ -77,5 +77,5 @@ input {
     font-size: 2.5rem;
   }
 }
-</style>>
+</style>
 
